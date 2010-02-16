@@ -1,0 +1,3 @@
+EXPORTS
+	?IADClientUpdate@@YAXXZ @ 1 NONAME ; void IADClientUpdate(void)
+

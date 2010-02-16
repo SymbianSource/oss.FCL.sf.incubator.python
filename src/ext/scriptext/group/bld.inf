@@ -1,0 +1,6 @@
+PRJ_MMPFILES
+scriptext.mmp
+
+PRJ_EXPORTS
+..\src\test_scriptext.py	              c:\data\python\test_scriptext.py
+/* ..\src\AccessPolicy_AliasValid.xml	      c:\data\python\AccessPolicy_AliasValid.xml */

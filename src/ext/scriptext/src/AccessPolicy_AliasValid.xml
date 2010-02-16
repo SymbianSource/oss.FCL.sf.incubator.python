@@ -1,0 +1,73 @@
+<!--  Copyright (c) 2008 Nokia Corporation
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *     http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+ -->
+ 
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<policy>
+		<!-- an alias groups a set of capabilities under one name -->
+		<alias name="UserDataGroup">
+				<info>This can contain info which can be displayed with capabilities while prompting</info>				
+				<capabilities>
+					<capability>ReadUserData</capability>
+					<capability>WriteUserData</capability>
+					<capability>Location</capability>
+					<capability>UserEnvironment</capability>
+				</capabilities>
+		</alias>
+		
+		<alias name="NetworkGroup">
+				<capabilities>
+					<!--capability>UserPrivacyData</capability-->
+					<capability>NetworkServices</capability>
+					<capability>LocalServices</capability>
+				</capabilities>
+		</alias>
+		
+		<alias name="DeviceResourcesGroup">
+				<capabilities>
+					<!--capability>UserPrivacyData</capability-->
+					<capability>MultimediaDD</capability>
+					<capability>ReadDeviceData</capability>
+					<capability>WriteDeviceData</capability>
+					<capability>CommDD</capability>
+					<capability>SurroundingsDD</capability>					
+					<capability>NetworkControl</capability>
+				</capabilities>
+		</alias>
+		
+		<!-- specify a protection domain -->
+		<domain name="UnTrusted">				
+				<!-- user-grantable capabilities for this domain -->
+				<user>
+						<condition>session</condition>
+						<condition>blanket</condition>
+						<defaultCondition>oneshot</defaultCondition>
+						<capabilities>
+								<capability>UserDataGroup</capability>
+								<capability>NetworkGroup</capability>
+						</capabilities>
+				</user>
+				
+				<user>
+						<defaultCondition>oneshot</defaultCondition>
+						<capabilities>
+								<capability>DeviceResourcesGroup</capability>
+						</capabilities>
+				</user>
+				
+				
+				<!-- could extend this to other types of conditional capabilities -->
+		</domain>
+				
+</policy>
